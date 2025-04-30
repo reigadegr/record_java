@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xxx</groupId>
-        <artifactId>manage_system</artifactId>
+        <artifactId>record</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Users</artifactId>
+    <artifactId>User</artifactId>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -56,6 +56,36 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.xxx.UsersApplicationStarter</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.github.tokgoronin</groupId>
+                <artifactId>jimmerCodeGen-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <configuration>
+                    <!-- 必选项：生成java代码或kotlin代码 -->
+                    <codeType>java</codeType>
+
+                    <!-- 必选项：jdbc配置 -->
+                    <jdbcConfig>
+                        <driver>com.mysql.jdbc.Driver</driver>
+                        <url>jdbc:mysql://localhost:3306/record?characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</url>
+                        <username>root</username>
+                        <password>1234</password>
+                    </jdbcConfig>
+
+                    <!-- 需要生成的表，如果不写的话，默认生成所有的表 -->
+                    <tables>
+                    </tables>
+
+                    <!-- 忽略表前缀 -->
+                    <tablePrefix/>
+                    <!-- 是否生成dao -->
+                    <daos>true</daos>
+                    <!-- 生成的文件存放的路径 -->
+                    <sourcePath>src/main/java/</sourcePath>
+                    <!-- 生成的文件存放的包名 -->
+                    <packagePath>com.xxx</packagePath>
                 </configuration>
             </plugin>
         </plugins>

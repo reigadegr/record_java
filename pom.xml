@@ -22,7 +22,7 @@
     <description>打卡记录后端</description>
 
     <modules>
-        <module>Users</module>
+        <module>User</module>
         <module>Gateway</module>
     </modules>
 
